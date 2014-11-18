@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<head>
+  <meta charset="utf-8">
+ <title>Registration Form</title>
+  <link rel="stylesheet" href="css/style.css">
+
+<script>
+
+var httpRequest = null;
+
+function getXMLHttpRequest(){
+     if(window.ActiveXObject){
+        try{
+                return new ActiveXObject("Msxml2.XMLHTTP");
+        }catch(e){
+                try{
+                        return new ActiveXObject("Microsoft.XMLHTTP");
+                }catch(e1){
+                        return(null);
+                }
+        }
+     }else if(window.XMLHttpRequest){
+           return new XMLHttpRequest();
+     }else{
+           return null;
+     }
+}
+
+ 
+
+function load(url){
+     httpRequest = getXMLHttpRequest();
+     httpRequest.onreadystatechange = viewMessage;
+     httpRequest.open("GET", url, true);
+     httpRequest.send(null);
+}
+
+
+function viewMessage(){
+     if(httpRequest.readyState == 4){
+         
+	  if(httpRequest.status == 200){
+                  // alert(httpRequest.responseText);
+		
+			
+                  if(httpRequest.responseText.trim() != 'ok'){
+                        var frm = document.register_form;
+                             frm.user_id.value = "";
+                             frm.user_id.placeholder = "ID ALREADY EXISTS"  ; 
+                  }
+		  else{
+                      var frm = document.register_form;
+                          frm.user_id.placeholder = "ID(4-15);"   
+                 } 
+        
+	   }else{
+                   alert("실패하였습니다 : "+httpRequest.status);
+           }
+     }
+}
+
+
+function check_id(url){
+  var frm  = document.register_form;
+  var user_id   = frm.user_id;
+  var id = user_id.value; 
+
+ if(id.length < 4){ user_id.placeholder = "TOO SHORT(4-15)"; user_id.value = ""; return; }
+ else if ( id.length > 15 ){ user_id.placeholder = "TOO LONG(4-15)"; user_id.value = ""; return ;}
+ else { user_id.placeholder ="ID(4-15)";}
+
+      var ul = url+"?id="+id;
+	  load(ul);     
+
+  // alert( " 4 < ID LENGTH  < 15 " ) ;  
+ }
+
+
+
+</script> 
+</head>
+<body>
+  <h1 class="register-title">Welcome</h1>
+
+
+ 
+  <form name ="register_form" class="register" method="post" action="./check_id.php">
+    <div class="register-switch">
+      <input type="radio" name="sex" value="F" id="sex_f" class="register-switch-input" checked>
+      <label for="sex_f" class="register-switch-label">Female</label>
+      <input type="radio" name="sex" value="M" id="sex_m" class="register-switch-input">
+      <label for="sex_m" class="register-switch-label">Male</label>
+    </div>
+    <input type="text"  name ="user_id"  class="register-input" placeholder="Id(4-15)" onblur="check_id('check_id.php')" >
+  <input type="text" name ="user_name" class="register-input" placeholder="Name(in English)">
+     <input type="text" name ="user_phone" class="register-input" placeholder="Phone( without '-' )">
+     <input type="email" name ="user_email" class="register-input" placeholder="Email address">
+    <input type="password" name ="user_pass1" class="register-input" placeholder="Password(8~16)">
+     <input type="password" name ="user_pass2" class="register-input" placeholder="Confirm Password">
+    <input type="submit" name value="Create Account" class="register-button">
+</form>
+
+</body>
+</html>

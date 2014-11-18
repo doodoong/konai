@@ -1,0 +1,6 @@
+<Directory />
+	options FollowSymLinks
+	AllowOverride None
+	Order deny, allow
+	Allow from all
+</Directory>
