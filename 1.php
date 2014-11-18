@@ -4,7 +4,11 @@
       <meta http-equiv="Content-Type" contents="text/html;charset=utf-8">
     </head>
     <body>
-    	why...?
+      <form action="url" method="GET">
+        why...?
+        <input type="submit" />
+      </form>
+
     </body>
 
 </html>
