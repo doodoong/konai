@@ -1,8 +1,10 @@
 <html>
     <head>
-    	menu. strange
+      <title>menu. strange</title>
+      <meta http-equiv="Content-Type" contents="text/html;charset=utf-8">
     </head>
     <body>
     	why...?
     </body>
+
 </html>
