@@ -8,6 +8,10 @@
         why...?
         <input type="submit" />
       </form>
+      <form action="url" method="GET">
+      ....
+      <br/>
+      </form>
 
     </body>
 
