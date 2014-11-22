@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 $is_logged = $_SESSION['is_logged'];
 if($is_logged=='YES') {
     $user_id = $_SESSION['user_id'];
@@ -11,7 +11,7 @@ else {
      echo "<script>alert(\"check ID and PASSWORD.\"); history.back(-1);</script>";
 }
 //var_dump($_SESSION);
-
+*/
 ?>
 
 
@@ -54,15 +54,17 @@ table, th, td {
         <h1 class="menu-title" >Material Information</h1>
         <div id = "left-square" class="about">
 	<div class="result">
- 	<h2 class="contents-title"> PROCESS LIST </h2>
+ 	<h2 class="contents-title"> Material </h2>
 	<table style="width:100%; font-size:15px">
 	<tr>
-	<th>Process</th>
+	<th>Material</th>
 	<th>Description</th>
 	<th>Key</th>
-	<tr>
+	<th>lot number</th>
+	</tr>
+	
 	  <?php
-        include_once ('../config.php');
+    /*    include_once ('../config.php');
         $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
         mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
         $sql = "select * from Process order by p_id desc";
@@ -79,7 +81,7 @@ table, th, td {
 
             echo '<p class="contents-input"> No process </p>';
         }
-        mysql_close($conn);
+        mysql_close($conn);*/
         ?>
 	
 	</table>
@@ -103,5 +105,3 @@ table, th, td {
 	</div>
  </BODY>
 </HTML>
-
-
