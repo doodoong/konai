@@ -64,7 +64,7 @@ table, th, td {
 	</tr>
 	
 	  <?php
-    /*    include_once ('../config.php');
+	    include_once ('../config.php');
         $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
         mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
         $sql = "select * from Process order by p_id desc";
@@ -81,7 +81,7 @@ table, th, td {
 
             echo '<p class="contents-input"> No process </p>';
         }
-        mysql_close($conn);*/
+        mysql_close($conn);
         ?>
 	
 	</table>
