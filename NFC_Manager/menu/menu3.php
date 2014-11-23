@@ -88,7 +88,14 @@ table, th, td {
 	</div>
 	</div>
        <div id = "right-square" class="about">
-	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
+           <form action="./menu3.php?name=material_name" method="GET">
+               <input type="text" name="material_name" placeholder="Material Name">
+               <input type="submit" value="Search">
+           </form>
+<?php
+   echo $_GET[material_name];
+?>
+<!--	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
 	<h2 class="contents-title"> INSERT PROCESS </h2>	
 	<input type="text" name ="process_name" class="contents-input" placeholder="Process Name">
  	 <input type="text" name ="process_contents" class="contents-input" placeholder="Process Contents(0~100)">
@@ -101,7 +108,7 @@ table, th, td {
         <input type="text" name ="process_name" class="contents-input" placeholder="Process Name">
         <input type="submit" name value="Delete" class="register-button" >
 	
-	</form>
+	</form>-->
 	</div>
  </BODY>
 </HTML>
