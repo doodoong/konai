@@ -51,13 +51,13 @@ table, th, td {
 </style>
 </head>
     <BODY>
-        <h1 class="menu-title" >Material Information</h1>
+        <h1 class="menu-title" >Item Information</h1>
         <div id = "left-square" class="about">
 	<div class="result">
- 	<h2 class="contents-title"> Material </h2>
+ 	<h2 class="contents-title"> Item </h2>
 	<table style="width:100%; font-size:15px">
 	<tr>
-	<th>Material</th>
+	<th>Item</th>
 	<th>Description</th>
 	<th>Key</th>
 	<th>lot number</th>
@@ -88,12 +88,12 @@ table, th, td {
 	</div>
 	</div>
        <div id = "right-square" class="about">
-           <form action="./menu3.php?name=material_name" method="GET">
-               <input type="text" name="material_name" placeholder="Material Name">
+           <form action="./menu3.php?name=item_name" method="GET">
+               <input type="text" name="item_name" placeholder="Item Name">
                <input type="submit" value="Search">
            </form>
 <?php
-   echo $_GET[material_name];
+   echo $_GET[item_name];
 ?>
 <!--	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
 	<h2 class="contents-title"> INSERT PROCESS </h2>	
