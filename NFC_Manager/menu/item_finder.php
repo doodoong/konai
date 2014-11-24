@@ -76,7 +76,7 @@ table, th, td {
         {
                 while($row = mysql_fetch_array($result)){
 
-                echo '<tr> <th>'.$row["item_name"].'</th> <th>'.$row["item_no"].'</th><th>'.$row["lot_no"].$row["item_p"].$row["current_state"].'</th></tr>';
+                echo '<tr> <th>'.$row["item_name"].'</th> <th>'.$row["item_no"].'</th><th>'.$row["lot_no"].'</th><th>'.$row["item_p"].'</th><th>'.$row["current_state"].'</th></tr>';
                 }
         }else {
 
