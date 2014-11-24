@@ -52,14 +52,7 @@ table, th, td {
 </head>
     <BODY>
         <h1 class="menu-title" >Item Information</h1>
-        <div id = "right-square" class="about">
-            <form action="./item_finder.php?name=item_name" method="GET">
-                <input type="text" name="item_name" placeholder="Item Name">
-                <input type="submit" value="Search">
-            </form>
-            <?php
-                echo $_GET[item_name];
-            ?>
+        
         
         <div id = "left-square" class="about">
     	<div class="result">
@@ -97,7 +90,14 @@ table, th, td {
     	</table>
     	</div>
     	</div>
-
+    	<div id = "right-square" class="about">
+            <form action="./item_finder.php?name=item_name" method="GET">
+                <input type="text" name="item_name" placeholder="Item Name">
+                <input type="submit" value="Search">
+            </form>
+            <?php
+                echo $_GET[item_name];
+            ?>
     
     
 <!--	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
