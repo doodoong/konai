@@ -58,9 +58,10 @@ table, th, td {
 	<table style="width:100%; font-size:15px">
 	<tr>
 	<th>Item</th>
-	<th>Description</th>
-	<th>Key</th>
-	<th>lot number</th>
+	<th>Item Number</th></th>
+	<th>Lot Number</th>
+	<th>Process Order</th>
+	<th>Status</th>
 	</tr>
 	
 	  <?php
