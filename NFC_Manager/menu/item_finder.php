@@ -87,7 +87,7 @@ table, th, td {
 	</table>
 	</div>
 	</div>
-	
+
     <div id = "right-square" class="about">
         <form action="./menu3.php?name=item_name" method="GET">
             <input type="text" name="item_name" placeholder="Item Name">
