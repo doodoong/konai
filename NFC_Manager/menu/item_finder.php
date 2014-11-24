@@ -87,14 +87,18 @@ table, th, td {
 	</table>
 	</div>
 	</div>
-       <div id = "right-square" class="about">
-           <form action="./menu3.php?name=item_name" method="GET">
-               <input type="text" name="item_name" placeholder="Item Name">
-               <input type="submit" value="Search">
-           </form>
-<?php
-   echo $_GET[item_name];
-?>
+	
+    <div id = "right-square" class="about">
+        <form action="./menu3.php?name=item_name" method="GET">
+            <input type="text" name="item_name" placeholder="Item Name">
+            <input type="submit" value="Search">
+        </form>
+    <?php
+        echo $_GET[item_name];
+    ?>
+    <form action="../../index.php">
+    	<input type="submit" value="처음으로"/>
+    </form>
 <!--	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
 	<h2 class="contents-title"> INSERT PROCESS </h2>	
 	<input type="text" name ="process_name" class="contents-input" placeholder="Process Name">
