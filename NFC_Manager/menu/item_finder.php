@@ -100,6 +100,15 @@ table, th, td {
                 <input type="text" name="item_name" placeholder="Item Name">
                 <input type="submit" value="Search">
             </form>
+            <form action="./item_finder.php" method="GET">
+                <select name="type">
+                    <option value="name">Item Name</option>
+                    <option value="item_number">Item Number</option>
+                    <option value="lot_number">Lot Number</option>
+                </select>
+                <input type="text" name="blank"/>
+                <input type="submit" value="Search"/>
+            </form>
         
     
 <!--	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
