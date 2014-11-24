@@ -67,13 +67,18 @@ table, th, td {
     	</tr>
     	
     	  <?php
-    	    include_once ('../config.php');
+		  include_once ('../config.php');
             $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
             mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
-            $sql = "select * from Item where item_name='$_GET[item_name]' order by item_id desc";
-            $result = mysql_query($sql) or die("SQL ERROR");
+			if (empty ($_GET[item_name])) {
+				$sql = "select * from Item order by item_id desc";
+			} else {
+
+			$sql = "select * from Item where item_name='$_GET[item_name]' order by item_id desc";
+			}
+			$result = mysql_query($sql) or die("SQL ERROR");
             $num = mysql_num_rows($result);
-        
+			
             if (mysql_num_rows($result) > 0)
             {
                     while($row = mysql_fetch_array($result)){
@@ -82,7 +87,7 @@ table, th, td {
                     }
             }else {
     
-                echo '<p class="contents-input"> No process </p>';
+                echo '<p class="contents-input"> No matching Items </p>';
             }
             mysql_close($conn);
             ?>
@@ -95,10 +100,6 @@ table, th, td {
                 <input type="text" name="item_name" placeholder="Item Name">
                 <input type="submit" value="Search">
             </form>
-            <?php
-                echo $_GET[item_name];
-            ?>
-    
     
 <!--	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
 	<h2 class="contents-title"> INSERT PROCESS </h2>	
