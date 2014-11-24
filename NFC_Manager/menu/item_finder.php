@@ -68,7 +68,7 @@ table, th, td {
 	    include_once ('../config.php');
         $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
         mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
-        $sql = "select * from Item order by p_id desc";
+        $sql = "select * from Item order by item_id desc";
         $result = mysql_query($sql) or die("SQL ERROR");
         $num = mysql_num_rows($result);
     
@@ -76,7 +76,7 @@ table, th, td {
         {
                 while($row = mysql_fetch_array($result)){
 
-                echo '<tr> <th>'.$row["p_name"].'</th> <th>'.$row["p_detail"].'</th><th>'.$row["p_key"].'</th></tr>';
+                echo '<tr> <th>'.$row["item_name"].'</th> <th>'.$row["item_no"].'</th><th>'.$row["lot_no"].$row["item_p"].$row["current_state"].'</th></tr>';
                 }
         }else {
 
