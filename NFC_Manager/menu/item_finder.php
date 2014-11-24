@@ -68,7 +68,7 @@ table, th, td {
 	    include_once ('../config.php');
         $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
         mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
-        $sql = "select * from Process order by p_id desc";
+        $sql = "select * from Item order by p_id desc";
         $result = mysql_query($sql) or die("SQL ERROR");
         $num = mysql_num_rows($result);
     
@@ -97,9 +97,7 @@ table, th, td {
     <?php
         echo $_GET[item_name];
     ?>
-    <form action="../../index.php">
-    	<input type="submit" value="처음으로"/>
-    </form>
+    
 <!--	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
 	<h2 class="contents-title"> INSERT PROCESS </h2>	
 	<input type="text" name ="process_name" class="contents-input" placeholder="Process Name">
