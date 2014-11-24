@@ -70,7 +70,7 @@ table, th, td {
     	    include_once ('../config.php');
             $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
             mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
-            $sql = "select * from Item where item_name='$_GET[item_name]' order by item_id desc";
+            $sql = "select * from Item where item_name='$_GET['item_name']' order by item_id desc";
             $result = mysql_query($sql) or die("SQL ERROR");
             $num = mysql_num_rows($result);
         
