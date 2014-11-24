@@ -52,51 +52,53 @@ table, th, td {
 </head>
     <BODY>
         <h1 class="menu-title" >Item Information</h1>
+        <div id = "right-square" class="about">
+            <form action="./item_finder.php?name=item_name" method="GET">
+                <input type="text" name="item_name" placeholder="Item Name">
+                <input type="submit" value="Search">
+            </form>
+            <?php
+                echo $_GET[item_name];
+            ?>
+        
         <div id = "left-square" class="about">
-	<div class="result">
- 	<h2 class="contents-title"> Item </h2>
-	<table style="width:100%; font-size:15px">
-	<tr>
-	<th>Item</th>
-	<th>Item Number</th></th>
-	<th>Lot Number</th>
-	<th>Process Order</th>
-	<th>Status</th>
-	</tr>
-	
-	  <?php
-	    include_once ('../config.php');
-        $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
-        mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
-        $sql = "select * from Item order by item_id desc";
-        $result = mysql_query($sql) or die("SQL ERROR");
-        $num = mysql_num_rows($result);
+    	<div class="result">
+     	<h2 class="contents-title"> Item </h2>
+    	<table style="width:100%; font-size:15px">
+    	<tr>
+    	<th>Item</th>
+    	<th>Item Number</th></th>
+    	<th>Lot Number</th>
+    	<th>Process Order</th>
+    	<th>Status</th>
+    	</tr>
+    	
+    	  <?php
+    	    include_once ('../config.php');
+            $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
+            mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
+            $sql = "select * from Item where item_name='$_GET[item_name]' order by item_id desc";
+            $result = mysql_query($sql) or die("SQL ERROR");
+            $num = mysql_num_rows($result);
+        
+            if (mysql_num_rows($result) > 0)
+            {
+                    while($row = mysql_fetch_array($result)){
     
-        if (mysql_num_rows($result) > 0)
-        {
-                while($row = mysql_fetch_array($result)){
+                    echo '<tr> <th>'.$row["item_name"].'</th> <th>'.$row["item_no"].'</th><th>'.$row["lot_no"].'</th><th>'.$row["item_p"].'</th><th>'.$row["current_state"].'</th></tr>';
+                    }
+            }else {
+    
+                echo '<p class="contents-input"> No process </p>';
+            }
+            mysql_close($conn);
+            ?>
+    	
+    	</table>
+    	</div>
+    	</div>
 
-                echo '<tr> <th>'.$row["item_name"].'</th> <th>'.$row["item_no"].'</th><th>'.$row["lot_no"].'</th><th>'.$row["item_p"].'</th><th>'.$row["current_state"].'</th></tr>';
-                }
-        }else {
-
-            echo '<p class="contents-input"> No process </p>';
-        }
-        mysql_close($conn);
-        ?>
-	
-	</table>
-	</div>
-	</div>
-
-    <div id = "right-square" class="about">
-        <form action="./menu3.php?name=item_name" method="GET">
-            <input type="text" name="item_name" placeholder="Item Name">
-            <input type="submit" value="Search">
-        </form>
-    <?php
-        echo $_GET[item_name];
-    ?>
+    
     
 <!--	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
 	<h2 class="contents-title"> INSERT PROCESS </h2>	
