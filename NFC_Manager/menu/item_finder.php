@@ -70,6 +70,7 @@ table, th, td {
 		  include_once ('../config.php');
             $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
             mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
+			
 			if (empty ($_GET[item_name])) {
 				$sql = "select * from Item order by item_id desc";
 			} else {
@@ -106,7 +107,7 @@ table, th, td {
                     <option value="item_number">Item Number</option>
                     <option value="lot_number">Lot Number</option>
                 </select>
-                <input type="text" name="blank"/>
+                <input type="text" name="keyword"/>
                 <input type="submit" value="Search"/>
             </form>
         
