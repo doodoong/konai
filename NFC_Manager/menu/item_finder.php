@@ -71,26 +71,28 @@ table, th, td {
             $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
             mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
 			
-			if (empty ($_GET[item_name])) {
+			if (empty ($_GET[keyword])) {
 				$sql = "select * from Item order by item_id desc";
-			} else {
-
-			$sql = "select * from Item where item_name='$_GET[item_name]' order by item_id desc";
+			} elseif ($_GET[type] === 'name') {
+				$sql = "select * from Item where item_name='$_GET[keyword]' order by item_id desc";
+			} elseif ($_GET[type] === 'item_number') {
+				$sql = "select * from Item where item_no='$_GET[keyword]' order by item_id desc";
+			} elseif ($_GET[type] === 'lot_number') {
+				$sql = "select * from Item where lot_no='$_GET[keyword]' order by item_id desc";
 			}
-			$result = mysql_query($sql) or die("SQL ERROR");
-            $num = mysql_num_rows($result);
-			
-            if (mysql_num_rows($result) > 0)
-            {
-                    while($row = mysql_fetch_array($result)){
-    
-                    echo '<tr> <th>'.$row["item_name"].'</th> <th>'.$row["item_no"].'</th><th>'.$row["lot_no"].'</th><th>'.$row["item_p"].'</th><th>'.$row["current_state"].'</th></tr>';
-                    }
-            }else {
-    
-                echo '<p class="contents-input"> No matching Items </p>';
-            }
-            mysql_close($conn);
+
+			$result = mysql_query ($sql) or die ("SQL ERROR");
+			$num = mysql_num_rows ($result);
+
+			if (mysql_num_rows ($result) > 0)
+			{
+				while ($row = mysql_fetch_array ($result)) {
+					echo '<tr> <th>'.$row["item_name"].'</th> <th>'.$row["item_no"].'</th><th>'.$row["lot_no"].'</th><th>'.$row["item_p"].'</th><th>'.$row["current_state"].'</th></tr>';
+				}
+			} else {
+				echo '<p class="contents-input"> No matching Items </p>';
+			}
+			mysql_close($conn);
             ?>
     	
     	</table>
@@ -103,10 +105,14 @@ table, th, td {
             </form>
             <form action="./item_finder.php" method="GET">
                 <select name="type">
-                    <option value="name">Item Name</option>
-                    <option value="item_number">Item Number</option>
-                    <option value="lot_number">Lot Number</option>
-                </select>
+					<option value="name">Item Name</option>
+					<option value="item_number">Item Number</option>
+					<option value="lot_number">Lot Number</option>
+				</select>
+				<script>
+					document.form.type='<?=$type?>';
+				</script>
+
                 <input type="text" name="keyword"/>
                 <input type="submit" value="Search"/>
             </form>
