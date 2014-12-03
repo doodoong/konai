@@ -35,16 +35,16 @@ table, th, td {
 
 #left-square {
     margin-left : 10%;
-    width: 80%;
-    height: 400px;
+    width: 45%;
+    height: 500px;
     float : left;	
     overflow: auto;
 }
-#bottom-square {
-    margin-left : 10%;
-    width: 80%;
-    height: 30px;
-    float : left;
+#right-square {
+    margin-right : 10%;
+    width: 30%;
+    height: 500px;
+    float : right;
     overflow: auto;
 }
 
@@ -56,7 +56,7 @@ table, th, td {
         
         <div id = "left-square" class="about">
     	<div class="result">
-			<!--     	<h2 class="contents-title"> Item </h2> -->
+     	<h2 class="contents-title"> Item </h2>
     	<table style="width:100%; font-size:15px">
     	<tr>
     	<th>Item</th>
@@ -70,11 +70,11 @@ table, th, td {
 		  include_once ('../config.php');
             $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
             mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
-
+			
 			if (empty ($_GET[keyword])) {
 				$sql = "select * from Item order by item_id desc";
 			} elseif ($_GET[type] === 'name') {
-				$sql = "select * from Item where item_name like '%$_GET[keyword]%' order by item_id desc";
+				$sql = "select * from Item where item_name='$_GET[keyword]' order by item_id desc";
 			} elseif ($_GET[type] === 'item_number') {
 				$sql = "select * from Item where item_no='$_GET[keyword]' order by item_id desc";
 			} elseif ($_GET[type] === 'lot_number') {
@@ -98,22 +98,26 @@ table, th, td {
     	</table>
     	</div>
     	</div>
-    	<div id = "bottom-square" class="about">
-			<form name="search_form" action="./item_finder.php" method="GET">
-				<p style="text-align : left; font-size : 15px; margin-left : 5%">
-                <select name="type" style="height : 25px">
+    	<div id = "right-square" class="about">
+            <form action="./item_finder.php" method="GET">
+                <input type="text" name="item_name" placeholder="Item Name">
+                <input type="submit" value="Search">
+            </form>
+            <form action="./item_finder.php" method="GET">
+                <select name="type">
 					<option value="name">Item Name</option>
 					<option value="item_number">Item Number</option>
 					<option value="lot_number">Lot Number</option>
 				</select>
-                <input type="text" style="margin-left : 1%; margin-right : 3%" name="keyword"/>
-				<input type="submit" style="height : 30px; width : 100px" value="Search"/>
 				<script>
-					document.search_form.type.value="<?php echo $_GET[type]; ?>";
-					document.search_form.keyword.value="<?php echo $_GET[keyword]; ?>";
+					document.form.type='<?=$type?>';
 				</script>
-			</form>
-   
+
+                <input type="text" name="keyword"/>
+                <input type="submit" value="Search"/>
+            </form>
+        
+    
 <!--	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
 	<h2 class="contents-title"> INSERT PROCESS </h2>	
 	<input type="text" name ="process_name" class="contents-input" placeholder="Process Name">
