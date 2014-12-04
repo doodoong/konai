@@ -53,7 +53,6 @@ table, th, td {
     <BODY>
         <h1 class="menu-title" >Item Information</h1>
         
-        
         <div id = "left-square" class="about">
     	<div class="result">
 			<!--     	<h2 class="contents-title"> Item </h2> -->
@@ -76,9 +75,9 @@ table, th, td {
 			} elseif ($_GET[type] === 'name') {
 				$sql = "select * from Item where item_name like '%$_GET[keyword]%' order by item_id desc";
 			} elseif ($_GET[type] === 'item_number') {
-				$sql = "select * from Item where item_no='$_GET[keyword]' order by item_id desc";
+				$sql = "select * from Item where item_no like '%$_GET[keyword]%' order by item_id desc";
 			} elseif ($_GET[type] === 'lot_number') {
-				$sql = "select * from Item where lot_no='$_GET[keyword]' order by item_id desc";
+				$sql = "select * from Item where lot_no like '%$_GET[keyword]%' order by item_id desc";
 			}
 
 			$result = mysql_query ($sql) or die ("SQL ERROR");
