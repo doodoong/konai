@@ -113,21 +113,6 @@ table, th, td {
 					document.search_form.keyword.value="<?php echo $_GET[keyword]; ?>";
 				</script>
 			</form>
-   
-<!--	 <form name ="insert_form" class="contents" method="post" action="insert_process.php">
-	<h2 class="contents-title"> INSERT PROCESS </h2>	
-	<input type="text" name ="process_name" class="contents-input" placeholder="Process Name">
- 	 <input type="text" name ="process_contents" class="contents-input" placeholder="Process Contents(0~100)">
- 	 <input type="text" name ="process_key" class="contents-input" placeholder="Process key">
-	 <input type="submit" name value="Insert" class="register-button"  onclick="check_id('check_id.php')">
-	</form>
-
-	<form name ="delete_form" class="contents" method="post" action="delete_process.php">
-        <h2 class="contents-title"> DELETE PROCESS </h2>
-        <input type="text" name ="process_name" class="contents-input" placeholder="Process Name">
-        <input type="submit" name value="Delete" class="register-button" >
-	
-	</form>-->
-	</div>
+  	</div>
  </BODY>
 </HTML>
