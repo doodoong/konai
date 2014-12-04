@@ -1,17 +1,18 @@
 <?php
+/*
 session_start();
 $is_logged = $_SESSION['is_logged'];
 if($is_logged=='YES') {
-    $user_id = $_SESSION['user_id'];
-    $message = $user_id . ' 님, 로그인 했습니다.';
-    $authority = $_SESSION['authority'];
+	$user_id = $_SESSION['user_id'];
+	$message = $user_id . ' 님, 로그인 했습니다.';
+	$authority = $_SESSION['authority'];
 
 }
 else {
-     echo "<script>alert(\"check ID and PASSWORD.\"); history.back(-1);</script>";
+	echo "<script>alert(\"check ID and PASSWORD.\"); history.back(-1);</script>";
 }
 //var_dump($_SESSION);
-
+ */
 ?>
 
 
@@ -91,13 +92,13 @@ table, th, td {
 	<input type="text" name ="process_name" class="contents-input" placeholder="Process Name">
  	 <input type="text" name ="process_contents" class="contents-input" placeholder="Process Contents(0~100)">
  	 <input type="text" name ="process_key" class="contents-input" placeholder="Process key">
-	 <input type="submit" name value="Insert" class="register-button"  onclick="check_id('check_id.php')">
+	 <input type="submit" name value="Insert" class="register-button"><!--  onclick="check_id('check_id.php')">-->
 	</form>
 
-	<form name ="delete_form" class="contents" method="post" action="delete_process.php">
-        <h2 class="contents-title"> DELETE PROCESS </h2>
+	<form name ="modify_form" class="contents" method="post" action="modify_process.php">
+        <h2 class="contents-title"> MODIFY PROCESS </h2>
         <input type="text" name ="process_name" class="contents-input" placeholder="Process Name">
-        <input type="submit" name value="Delete" class="register-button" >
+        <input type="submit" name value="Modify" class="register-button" >
 	
 	</form>
 	</div>

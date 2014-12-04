@@ -33,7 +33,7 @@ else {
   	<div class = "about"> 
 	<p class = "menu-links"><a href="menu/process_management.php">PROCESS<a></p>
 	<p class = "menu-links"><a href="menu/menu2.php">TASK</a></p>
-	<p class = "menu-links"><a href="menu/menu3.php">menu3</a></p>
+	<p class = "menu-links"><a href="menu/item_finder.php">ITEM</a></p>
 	</div>
 	<div class = "about"> 
 	<p class = "menu-links"><a href="login/logout.php">LOGOUT</a></p>
