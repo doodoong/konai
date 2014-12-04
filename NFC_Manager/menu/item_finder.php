@@ -108,7 +108,7 @@ table, th, td {
                 <input type="text" style="margin-left : 1%; margin-right : 3%" name="keyword"/>
 				<input type="submit" style="height : 30px; width : 100px" value="Search"/>
 				<script>
-					document.search_form.type.value="<?php echo $_GET[type]; ?>";
+					document.search_form.type.value="<?php if (empty ($_GET[type])) echo "name"; else echo $_GET[type]; ?>";
 					document.search_form.keyword.value="<?php echo $_GET[keyword]; ?>";
 				</script>
 			</form>
