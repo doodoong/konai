@@ -46,10 +46,10 @@ table, th, td {
 	<tr>
 	  <?php
         include_once ('../config.php');
-		extract($_POST);
+	//	extract($_POST);
         $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERROR");
         mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
-        $sql = "select * from Process where p_name=$process_name order by p_id desc";
+        $sql = "select * from Process where p_name='$_POST[process_name]' order by p_id desc";
         $result = mysql_query($sql) or die(mysql_error());
         $num = mysql_num_rows($result);
     
@@ -79,7 +79,7 @@ table, th, td {
  </form> -->
 
 	<form name ="delete_form" class="contents" method="post" action="modify_process.php">
-        <h2 class="contents-title"> MODIFY PROCESS </h2>
+        <h2 class="contents-title">  PROCESS </h2>
         <input type="text" name ="process_name" class="contents-input" placeholder="Process Name">
         <input type="submit" name value="Modify" class="register-button" >
 	
@@ -97,7 +97,7 @@ $conn =  mysql_connect($DB['host'], $DB['id'], $DB['pw'] ) or die("DB ACCESS ERR
 
 mysql_select_db($DB['db'], $conn) or die("DB SELECT ERROR");
 
-$user1 = ereg_replace(" ", "", $process_name);
+$user1 = ereg_replace(" ", "", $_POST[process_name]);
 
 if( !$user1  )
 {
@@ -107,7 +107,7 @@ if( !$user1  )
 
 }
 
-$sql = "select * from Process where p_name ='$process_name'";
+$sql = "select * from Process where p_name ='$_POST[process_name]'";
 
 $result = mysql_query($sql) or die("SQL ERROR");
 
